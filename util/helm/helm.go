@@ -46,6 +46,9 @@ func NewHelmApp(workDir string, repos []HelmRepository, isLocal bool, version st
 	}
 	cmd.IsLocal = isLocal
 
+	fmt.Printf("--- TEST #2 ---")
+	fmt.Printf("cmd: %v", cmd)
+
 	return &helm{repos: repos, cmd: *cmd, passCredentials: passCredentials}, nil
 }
 
@@ -121,6 +124,8 @@ func Version(shortForm bool) (string, error) {
 		cmdArgs = append(cmdArgs, "--short")
 	}
 	cmd := exec.Command(executable, cmdArgs...)
+	fmt.Printf("--- TEST #1 ---")
+	fmt.Printf("cmd: %v", cmd)
 	// example version output:
 	// long: "version.BuildInfo{Version:\"v3.3.1\", GitCommit:\"249e5215cde0c3fa72e27eb7a30e8d55c9696144\", GitTreeState:\"clean\", GoVersion:\"go1.14.7\"}"
 	// short: "v3.3.1+g249e521"
